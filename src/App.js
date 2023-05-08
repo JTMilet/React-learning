@@ -2,10 +2,10 @@
  * @Author: 杜康
  * @Date: 2023-05-08 09:40:18
  * @LastEditors: 杜康
- * @LastEditTime: 2023-05-08 16:12:15
+ * @LastEditTime: 2023-05-08 16:25:56
  * @FilePath: /react-learning/src/App.js
  */
-import React from 'react'
+import React, { createRef } from 'react'
 import './jsx-css.css'
 const name = '杜康'
 const getAge = () => {
@@ -72,6 +72,7 @@ class HelloComponent extends React.Component {
     counter: 0,
     message: ''
   }
+  msgRef = createRef()
   changeName = (newName) => {
     this.setState({
       name: newName
@@ -86,6 +87,8 @@ class HelloComponent extends React.Component {
     this.setState({
       message: e.target.value
     })
+    console.log(this.msgRef.current)
+    console.log(this.msgRef.current.value)
   }
   // 获取事件对象e
   classClickHandler = (e, msg) => {
@@ -104,7 +107,7 @@ class HelloComponent extends React.Component {
         <button onClick={() => { this.changeCounter() }}>change counter {this.state.counter}</button>
         ---- ---- ---- ---- <br />
         {/* 受控组件 */}
-        <input value={this.state.message} onChange={(e) => this.inputChange(e)} />
+        <input value={this.state.message} onChange={(e) => this.inputChange(e)} ref={this.msgRef} />
         <p>{this.state.message}</p>
       </div >
     )
