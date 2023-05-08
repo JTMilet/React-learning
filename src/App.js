@@ -2,7 +2,7 @@
  * @Author: 杜康
  * @Date: 2023-05-08 09:40:18
  * @LastEditors: 杜康
- * @LastEditTime: 2023-05-08 14:55:53
+ * @LastEditTime: 2023-05-08 15:07:56
  * @FilePath: /react-learning/src/App.js
  */
 import React from 'react'
@@ -67,13 +67,29 @@ const twoStyle = {
 
 // 类组建
 class HelloComponent extends React.Component {
+  state = {
+    name: ' new comer'
+  }
+  changeName = (newName) => {
+    this.setState({
+      name: newName
+    })
+  }
   // 获取事件对象e
   classClickHandler = (e, msg) => {
     console.log('类数组件中的事件被触发了！', e, msg)
   }
   render () {
     // 增加额外传参
-    return (<div onClick={(e) => this.classClickHandler(e, 'this is msg')}>this is app class component</div>)
+    return (
+      <div>
+        <div onClick={(e) => this.classClickHandler(e, 'this is msg')}>this is app class component</div>
+        ---- ---- ---- ---- <br />
+        <div>my name is {this.state.name}</div>
+        <br />
+        <button onClick={() => { this.changeName('dukang') }}>change name</button>
+      </div >
+    )
   }
 }
 
@@ -81,6 +97,7 @@ function App () {
   return (
     <div>
       <HelloComponent />
+      ---- ---- ---- ---- <br />
       {Hello()}
     </div>
   )
