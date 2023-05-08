@@ -2,7 +2,7 @@
  * @Author: 杜康
  * @Date: 2023-05-08 09:40:18
  * @LastEditors: 杜康
- * @LastEditTime: 2023-05-08 15:07:56
+ * @LastEditTime: 2023-05-08 15:35:59
  * @FilePath: /react-learning/src/App.js
  */
 import React from 'react'
@@ -68,11 +68,17 @@ const twoStyle = {
 // 类组建
 class HelloComponent extends React.Component {
   state = {
-    name: ' new comer'
+    name: ' new comer',
+    counter: 0
   }
   changeName = (newName) => {
     this.setState({
       name: newName
+    })
+  }
+  changeCounter = () => {
+    this.setState({
+      counter: this.state.counter + 1
     })
   }
   // 获取事件对象e
@@ -88,6 +94,8 @@ class HelloComponent extends React.Component {
         <div>my name is {this.state.name}</div>
         <br />
         <button onClick={() => { this.changeName('dukang') }}>change name</button>
+        <br />
+        <button onClick={() => { this.changeCounter() }}>change counter {this.state.counter}</button>
       </div >
     )
   }
