@@ -2,7 +2,7 @@
  * @Author: 杜康
  * @Date: 2023-05-08 09:40:18
  * @LastEditors: 杜康
- * @LastEditTime: 2023-05-08 17:34:08
+ * @LastEditTime: 2023-05-08 17:57:27
  * @FilePath: /react-learning/src/App.js
  */
 import React, { createRef } from 'react'
@@ -74,6 +74,7 @@ class HelloComponent extends React.Component {
   }
   msgRef = createRef()
   changeName = (newName) => {
+    this.props.getSonMsg('我是HelloComponent的数据')
     this.setState({
       name: newName
     })
@@ -118,10 +119,13 @@ class App extends React.Component {
   state = {
     message: 'this is father'
   }
+  getSonMsg = (msg) => {
+    console.log(msg)
+  }
   render () {
     return (
       <div>
-        <HelloComponent />
+        <HelloComponent getSonMsg={this.getSonMsg} />
         ---- ---- ---- ---- <br />
         {Hello()}
         ---- ---- ---- ---- <br />
