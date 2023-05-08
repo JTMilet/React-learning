@@ -2,9 +2,10 @@
  * @Author: 杜康
  * @Date: 2023-05-08 09:40:18
  * @LastEditors: 杜康
- * @LastEditTime: 2023-05-08 10:53:05
+ * @LastEditTime: 2023-05-08 11:14:10
  * @FilePath: /react-learning/src/App.js
  */
+import './jsx-css.css'
 const name = '杜康'
 const getAge = () => {
   return 18
@@ -46,8 +47,17 @@ function App () {
       <p>{getHTag(1)}</p>
       <p>{getHTag(2)}</p>
       <p>{getHTag(3)}</p>
+      --- --- --- ---
+      <p style={{ color: 'red', fontSize: '16px' }}>this is one style</p>
+      <p style={twoStyle}>this is two style</p>
+      <p className="jsx-css">this jsx-css file style</p>
     </div>
   )
+}
+
+const twoStyle = {
+  color: 'blue',
+  fontSize: '24px'
 }
 
 export default App
