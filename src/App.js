@@ -2,7 +2,7 @@
  * @Author: 杜康
  * @Date: 2023-05-08 09:40:18
  * @LastEditors: 杜康
- * @LastEditTime: 2023-05-08 16:25:56
+ * @LastEditTime: 2023-05-08 17:34:08
  * @FilePath: /react-learning/src/App.js
  */
 import React, { createRef } from 'react'
@@ -114,14 +114,21 @@ class HelloComponent extends React.Component {
   }
 }
 
-function App () {
-  return (
-    <div>
-      <HelloComponent />
-      ---- ---- ---- ---- <br />
-      {Hello()}
-    </div>
-  )
+class App extends React.Component {
+  state = {
+    message: 'this is father'
+  }
+  render () {
+    return (
+      <div>
+        <HelloComponent />
+        ---- ---- ---- ---- <br />
+        {Hello()}
+        ---- ---- ---- ---- <br />
+        <HelloSonComponent msg={this.state.message} />
+      </div>
+    )
+  }
 }
 
 function Hello () {
@@ -131,5 +138,13 @@ function Hello () {
   return (
     <div onClick={clickHandler}>hello</div>
   )
+}
+
+class HelloSonComponent extends React.Component {
+  render () {
+    return (
+      <p>this is HelloSon, {this.props.msg}</p>
+    )
+  }
 }
 export default App
