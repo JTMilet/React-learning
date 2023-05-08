@@ -2,7 +2,7 @@
  * @Author: 杜康
  * @Date: 2023-05-08 09:40:18
  * @LastEditors: 杜康
- * @LastEditTime: 2023-05-08 14:47:59
+ * @LastEditTime: 2023-05-08 14:52:57
  * @FilePath: /react-learning/src/App.js
  */
 import React from 'react'
@@ -67,8 +67,9 @@ const twoStyle = {
 
 // 类组建
 class HelloComponent extends React.Component {
-  classClickHandler = () => {
-    console.log('类数组件中的事件被触发了！')
+  // 获取事件对象e
+  classClickHandler = (e) => {
+    console.log('类数组件中的事件被触发了！', e)
   }
   render () {
     return (<div onClick={this.classClickHandler}>this is app class component</div>)
