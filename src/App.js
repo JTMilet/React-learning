@@ -2,7 +2,7 @@
  * @Author: 杜康
  * @Date: 2023-05-08 09:40:18
  * @LastEditors: 杜康
- * @LastEditTime: 2023-05-08 10:46:40
+ * @LastEditTime: 2023-05-08 10:53:05
  * @FilePath: /react-learning/src/App.js
  */
 const name = '杜康'
@@ -16,6 +16,18 @@ const songs = [
   { id: 1, name: '爱你' }
 ]
 // 使用map做遍历列表，使用number/string的key，提高框架diff性能
+const getHTag = type => {
+  if (type === 1) {
+    return <h1>this is h1</h1>
+  }
+  if (type === 2) {
+    return <h2>this is h2</h2>
+  }
+  if (type === 3) {
+    return <h3>this is h3</h3>
+  }
+  return null
+}
 function App () {
   return (
     <div className="App">
@@ -30,6 +42,10 @@ function App () {
       {flag ? <span>this is a span</span > : null}
       <br />
       {true && <span>this is another span</span>}
+      --- --- --- --- <br />
+      <p>{getHTag(1)}</p>
+      <p>{getHTag(2)}</p>
+      <p>{getHTag(3)}</p>
     </div>
   )
 }
