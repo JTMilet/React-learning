@@ -2,10 +2,11 @@
  * @Author: 杜康
  * @Date: 2023-05-08 09:40:18
  * @LastEditors: 杜康
- * @LastEditTime: 2023-05-09 11:14:00
+ * @LastEditTime: 2023-05-09 15:21:21
  * @FilePath: /react-learning/src/App.js
  */
 // import React, { createRef } from 'react'
+import { useState } from 'react'
 import './jsx-css.css'
 // const name = '杜康'
 // const getAge = () => {
@@ -152,16 +153,52 @@ import './jsx-css.css'
 //   }
 // }
 
-function App () {
+const list = [
+  {
+    name: 'intel',
+    hello: 'no'
+  },
+  {
+    name: 'amd',
+    hello: 'yes'
+  }
+]
+
+function Test ({ list }) {
   return (
-    <div>this is p, <Hello>不知道说什么</Hello></div>
+    <div >
+      {list.map(item => (
+        <p key={item.name}>{item.hello}</p>
+      ))}
+    </div>
   )
 }
 
-function Hello ({ children }) {
+// https://react.docschina.org/reference/react/useState#usestate
+// 参考react hook的useState的写法
+function Counter () {
+  const [count, setCount] = useState(0)
   return (
-    <div>子组件，{children}</div>
+    <div>
+      <button onClick={() => { setCount(count + 1) }}>{count}</button>
+    </div>
   )
 }
+
+function App () {
+  return (
+    // <div>this is p, <Hello>不知道说什么</Hello></div>
+    <div>
+      <Test list={list}></Test>
+      <Counter></Counter>
+    </div>
+  )
+}
+
+// function Hello ({ children }) {
+//   return (
+//     <div>子组件，{children}</div>
+//   )
+// }
 
 export default App
